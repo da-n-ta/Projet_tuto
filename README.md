@@ -1,3 +1,4 @@
+```mermaid
 graph LR
     X(("1ere reunion"))
     style X stroke:red,stroke-width:4px
@@ -32,8 +33,10 @@ graph LR
     end
     subgraph Cuisson
     E -- 15 --> F
+
     E -- 4 --> G
     F -- 10 --> H
     G -- 30 --> H
     
     end
+```
