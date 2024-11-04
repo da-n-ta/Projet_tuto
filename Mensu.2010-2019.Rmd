@@ -1,0 +1,92 @@
+---
+title: "Mensu.2010-2019"
+output: html_document
+date: "2024-10-31"
+---
+
+```{r import-numeric, echo=FALSE}
+library(dplyr)
+
+
+mens <- read.csv("~/ProjectsM1/ProjetTuto/MENS_SIM2_2010-2019.csv.gz", header=FALSE, sep=";")
+colnames(mens) <- as.character(unlist(mens[1, ]))
+mens <- mens[-1, ]
+
+attach(mens)
+
+mens$DATE <- as.numeric(DATE)
+mens$DRAINC_MENS <- as.numeric(DRAINC_MENS)
+mens$ECOULEMENT_MENS <- as.numeric(ECOULEMENT_MENS)
+mens$ETP_MENS<-as.numeric(mens$ETP_MENS)
+mens$EVAP_MENS<-as.numeric(mens$EVAP_MENS)
+mens$LAMBX<-as.numeric(mens$LAMBX)
+mens$LAMBY<-as.numeric(mens$LAMBY)
+mens$PE_MENS<-as.numeric(mens$PE_MENS)
+mens$PRELIQ_MENS <- as.numeric(PRELIQ_MENS)
+mens$PRENEI_MENS<-as.numeric(mens$PRENEI_MENS)
+mens$PRETOTM_MENS<-as.numeric(mens$PRETOTM_MENS)
+mens$RUNC_MENS<-as.numeric(mens$RUNC_MENS)
+mens$SPI1_MENS<-as.numeric(mens$SPI1_MENS)
+mens$SPI12_MENS<-as.numeric(mens$SPI12_MENS)
+mens$SPI3_MENS<-as.numeric(mens$SPI3_MENS)
+mens$SPI6_MENS<-as.numeric(mens$SPI6_MENS)
+mens$SSWI1_MENS<-as.numeric(mens$SSWI1_MENS)
+mens$SSWI12_MENS<-as.numeric(mens$SSWI12_MENS)
+mens$SSWI3_MENS<-as.numeric(mens$SSWI3_MENS)
+mens$SSWI6_MENS<-as.numeric(mens$SSWI6_MENS)
+mens$SWI_MENS<-as.numeric(mens$SWI_MENS)
+mens$T_MENS<-as.numeric(mens$T_MENS)
+
+
+
+```
+
+```{r sommaire}
+summary(mens)
+```
+
+
+```{r histo-boxplot, echo=TRUE}
+# Histogrammes et boxplots pour les variables numériques
+numeric_vars <- sapply(mens, is.numeric)
+for (var in names(mens)[numeric_vars]) {
+  # Histogramme
+  p1<- ggplot(mens, aes(x = .data[[var]])) + 
+    geom_histogram(bins = 30, fill = "blue", color = "black") +
+    ggtitle(paste("Histogramme de", var))
+  print(p1)
+  
+  # Boxplot
+ p2 <-  ggplot(mens, aes(y = .data[[var]])) +
+    geom_boxplot(fill = "orange") +
+    ggtitle(paste("Boxplot de", var))
+ print(p2)
+}
+```
+
+```{r outliers, echo=TRUE}
+# Fonction pour détecter les valeurs extrêmes d'une variable numérique
+detect_outliers <- function(x) {
+  Q1 <- quantile(x, 0.25, na.rm = TRUE)
+  Q3 <- quantile(x, 0.75, na.rm = TRUE)
+  IQR <- Q3 - Q1
+  lower_bound <- Q1 - 1.5 * IQR
+  upper_bound <- Q3 + 1.5 * IQR
+  return(x < lower_bound | x > upper_bound)
+}
+
+# Appliquer cette détection sur chaque variable numérique
+outliers <- list()
+for (var in names(mens)[numeric_vars]) {
+  outliers[[var]] <- mens %>% filter(detect_outliers(get(var)))
+}
+
+```
+
+```{r}
+# Exemple pour étudier les valeurs extrêmes d'une variable
+extreme_values_var <- outliers[["PRENEI_MENS"]] 
+print(extreme_values_var)
+
+```
+
