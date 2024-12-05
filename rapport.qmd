@@ -1,0 +1,65 @@
+---
+title: "Extreme Weather Events"
+author: "CAPITAN Serge,
+COMBELLES Martin,
+EL KHOURY Danielle,
+THIAM Alioune  Badara"
+#![](~/danielleelkhoury/Github/Projet_tuto/Meteo_isere_pic.jpg){.absolute top=200 left=0 width="350" height="300"}
+format: beamer
+
+---
+
+# Introdution
+- **Presentation:** We are studying extreme values in weather data, to help us predict extreme weather events.
+- **Problems:** Most of the data collected over the years is based on central measures, i.e. means, we are looking fro the maximums. We will also need to find data spread over a large time interval.
+- **Benefits:** It is a project that helps everyone, from governments to scientists to worldwide communities, by warning them ahead of time of the possible natural disasters heading their way.
+
+
+# Table of Contents
+::: {.incremental}
+- Planning
+- Data Treatment
+- Univariate Analysis
+- Isere Map
+::: 
+
+# Planning
+## Find relevant data
+
+- Search the internet for data 
+- Do a quick summary to check its relevance in order to choose one data set
+- Repeat for as many data sets as possible
+- Find the most appropriate data set
+
+## Analyse data and find enough extreme values
+- Extract characteristics of the variables that have these extreme values
+- Study and analyse their graphs
+- Study and interpret their measures 
+
+## Create maps to visualise our research
+- Discover softwares to display these maps with a legend
+- Annotate these maps
+- Colour the maps according to a colour gradient indicated in the legend
+
+## Inform citizens of any extreme event that might happen
+- Predict these extreme events 
+- Keep collecting data to have more accurate predictions
+
+# Data Treatment
+- Cleaning the dataset, handling missing values (NA)
+- Divide the dataset by meteo station
+- Identify the maxmimum per year
+
+##  Procedure
+- 
+
+
+<!-- - We extracted the maximum of precipitation for each year, each station 
+- We noticed that we have a lot of missing values for a large period of time
+- Upon further inspection, we noticed that some of the stations alternate capting the data ove the years
+- We decided not to treat all stations and choose around 40 stations to study ()
+- We looked into the isolated stations, as they represent its neighbourhood (whereas if a station is surrounded by others, the other stations may cover up for any missing information it might have), and checked if we have enough data 
+- Then, we looked into the stations within the same proximity -->
+
+
+
