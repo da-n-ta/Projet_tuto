@@ -1,12 +1,14 @@
 ---
 title: "Extreme Weather Events"
-author: "CAPITAN Serge,
-COMBELLES Martin,
-EL KHOURY Danielle,
-THIAM Alioune  Badara"
+author: "CAPITAN Serge, COMBELLES Martin, EL KHOURY Danielle, THIAM Alioune  Badara"
 #![](~/danielleelkhoury/Github/Projet_tuto/Meteo_isere_pic.jpg){.absolute top=200 left=0 width="350" height="300"}
-format: beamer
-
+format:
+  revealjs:
+    logo: images/uga_logo.png
+    css: assets/style.css
+    resources: images
+    header-includes: |
+      <script src="assets/custom.js" type="application/javascript"></script>
 ---
 
 # Introdution
