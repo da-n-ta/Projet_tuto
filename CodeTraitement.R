@@ -7,7 +7,7 @@ library(leaflet)
 ################################
 ##"cleaning du jeu de données"##
   # DataSet
-  data <- read.csv(file = "C:/Users/Serge C/Documents/MIASHS/ProjetTutore/Q_38_previous-1950-2022_RR-T-Vent/Q_38_previous-1950-2022_RR-T-Vent.csv", sep = ";")
+  data <- read.csv(file = "~/Downloads/Q_38_previous-1950-2022_RR-T-Vent.csv/Q_38_previous-1950-2022_RR-T-Vent.csv", sep = ";")
   attach(data)
   # Traitement de la variable année
   annee <- substr(AAAAMMJJ, 1,4)
@@ -56,12 +56,12 @@ library(leaflet)
           # frontIsere <- st_as_sf(txtconvert, coords = c("V1", "V2"), crs = 4326)
           # st_write(frontIsere, "isere.shp")
   ## Lecture des données traitées ci-dessus
-  dataconvert <- read.csv(file ="C:/Users/Serge C/Documents/MIASHS/ProjetTutore/dataStations.csv", header = TRUE)
-  isere <- st_read("C:/Users/Serge C/Documents/MIASHS/ProjetTutore/isere.shp")
+  dataconvert <- read.csv(file ="~/Github/Projet_tuto/dataStations.csv", header = TRUE)
+  isere <- st_read("~/Github/Projet_tuto/isere.shp")
   isere <- isere[,-1]
   isere_ligne <- st_union(isere[5:380,1]) %>%
     st_cast("LINESTRING") 
-  geo_data <- st_read("C:/Users/Serge C/Documents/MIASHS/ProjetTutore/dataStations.geojson")
+  geo_data <- st_read("~/Github/Projet_tuto/dataStations.geojson")
   
   # Traitelent des stations qui possèdent des données
   isol2 <- c(109, 14, 95, 131, 19, 47, 22, 145, 163, 108, 8, 48, 83, 21, 70, 111, 10,105, 179, 24, 68, 69, 67, 41, 20, 132, 158, 96, 97, 123, 32, 23,39,122,133,134,139,128,129,126,127,178,177,42,12,27,102,103,28,135,168,181,73,55,107,30,33,137,64,85,43,153,84,165,38,92,91,104,191,192,193,194,66,81,78,80,79,77,176,15,10,11,18,17,88,62,59,60,61,63,5,1,2,3,4,157)
@@ -84,12 +84,12 @@ library(leaflet)
       stroke = TRUE,
       fillOpacity = 0.7
     ) %>%
-    addPolylines(
-      data = isere_ligne,
-      color = "black",
-      weight = 2,
-      opacity = 0.8
-    ) %>%
+    # #addPolylines(
+    #   #data = isere_ligne,
+    #   color = "black",
+    #   weight = 2,
+    #   opacity = 0.8
+    # ) %>%
     addCircleMarkers(
       radius = 5,
       color = "blue",
