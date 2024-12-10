@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<script src="rapport_files/libs/clipboard/clipboard.min.js"></script>
-<script src="rapport_files/libs/quarto-html/tabby.min.js"></script>
-<script src="rapport_files/libs/quarto-html/popper.min.js"></script>
-<script src="rapport_files/libs/quarto-html/tippy.umd.min.js"></script>
-<link href="rapport_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="rapport_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="rapport_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="rapport_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<script src="presentation_files/libs/clipboard/clipboard.min.js"></script>
+<script src="presentation_files/libs/quarto-html/tabby.min.js"></script>
+<script src="presentation_files/libs/quarto-html/popper.min.js"></script>
+<script src="presentation_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="presentation_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="presentation_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="presentation_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="presentation_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="CAPITAN Serge, COMBELLES Martin, EL KHOURY Danielle, THIAM Alioune Badara">
@@ -15,8 +15,8 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="rapport_files/libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="rapport_files/libs/revealjs/dist/reveal.css">
+  <link rel="stylesheet" href="presentation_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="presentation_files/libs/revealjs/dist/reveal.css">
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -30,12 +30,12 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="rapport_files/libs/revealjs/dist/theme/quarto.css">
+  <link rel="stylesheet" href="presentation_files/libs/revealjs/dist/theme/quarto.css">
   <link rel="stylesheet" href="assets/style.css">
-  <link href="rapport_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="rapport_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="rapport_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="rapport_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <link href="presentation_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="presentation_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="presentation_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="presentation_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
 
   .callout {
@@ -329,6 +329,7 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Extreme Weather Events</h1>
+  <p class="subtitle">Tutor: ELMETHNI Jonathan</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -342,9 +343,22 @@ CAPITAN Serge, COMBELLES Martin, EL KHOURY Danielle, THIAM Alioune Badara
 <section id="introduction" class="title-slide slide level1 center">
 <h1>Introduction</h1>
 <ul>
-<li><strong>Presentation:</strong> We are studying extreme values in weather data, to help us predict extreme weather events. #cartes de risque, +exemple visuel</li>
-<li><strong>Problems:</strong> Most of the data collected over the years is based on central measures, i.e.&nbsp;means, we are looking fro the maximums. We will also need to find data spread over a large time interval. #prediction problem , as we only have 50 years of data</li>
-<li><strong>Benefits:</strong> It is a project that helps everyone, from governments to scientists to worldwide communities, by warning them ahead of time of the possible natural disasters heading their way.</li>
+<li><strong>Presentation:</strong>
+<ul>
+<li>Study of extreme values in weather data</li>
+</ul>
+<div style="position: absolute; top: 10px; right: 10px;">
+<img src="images/Meteo_isere_pic.jpg" alt="meteo" style="width: 800px;">
+</div></li>
+<li><strong>Problems:</strong>
+<ul>
+<li>Not enough data</li>
+<li>Prediction problems</li>
+</ul></li>
+<li><strong>Benefits:</strong>
+<ul>
+<li>Gives warnings of possible natural disasters</li>
+</ul></li>
 </ul>
 </section>
 
@@ -352,40 +366,14 @@ CAPITAN Serge, COMBELLES Martin, EL KHOURY Danielle, THIAM Alioune Badara
 <h1>Table of Contents</h1>
 <div>
 <ul>
-<li class="fragment">Planning</li>
 <li class="fragment">Data Treatment</li>
 <li class="fragment">Univariate Analysis</li>
-<li class="fragment">Isere Map</li>
+<li class="fragment">Maps</li>
+<li class="fragment">Planning</li>
 </ul>
 </div>
 </section>
 
-<section>
-<section id="planning-we-put-in-the-end" class="title-slide slide level1 center">
-<h1>Planning (we put in the end)</h1>
-<p>#outils qu’on a utilisé et les packages…+logos ## Find relevant data</p>
-<ul>
-<li>Search the meteo france website for data #carte de france, zoom sur isere +capture ecran du site</li>
-<li>Do a quick summary to check its relevance in order to choose one data set</li>
-<li>Repeat for as many data sets as possible</li>
-<li>Find the most appropriate data set</li>
-</ul>
-</section>
-<section id="analyse-data-and-find-enough-extreme-values" class="slide level2">
-<h2>Analyse data and find enough extreme values</h2>
-<p>#mettre l’exemple de prapoutel #we are looking for enough data as not all stations have enough data - Extract characteristics of the variables that have these #extreme values - Study and analyse their graphs - Study and interpret their measures</p>
-</section>
-<section id="create-maps-to-visualise-our-research" class="slide level2">
-<h2>Create maps to visualise our research</h2>
-<p>#mettre une carte cleuropete et heatmap - Discover softwares to display these maps with a legend - Annotate these maps - Colour the maps according to a colour gradient indicated in the legend</p>
-</section>
-<section id="inform-citizens-of-any-extreme-event-that-might-happen" class="slide level2">
-<h2>Inform citizens of any extreme event that might happen</h2>
-<ul>
-<li>Predict these extreme events</li>
-<li>Keep collecting data to have more accurate predictions</li>
-</ul>
-</section></section>
 <section>
 <section id="data-treatment" class="title-slide slide level1 center">
 <h1>Data Treatment</h1>
@@ -395,7 +383,7 @@ CAPITAN Serge, COMBELLES Martin, EL KHOURY Danielle, THIAM Alioune Badara
 <li>Identify the maxmimum per year</li>
 </ul>
 </section>
-<section id="procedure" class="slide level2">
+<section id="procedure" class="slide level2 center">
 <h2>Procedure</h2>
 <ul>
 <li>We extracted the maximum of precipitation for each year, each station</li>
@@ -404,6 +392,65 @@ CAPITAN Serge, COMBELLES Martin, EL KHOURY Danielle, THIAM Alioune Badara
 <li>We decided not to treat all stations and choose around 40 stations to study ()</li>
 <li>We looked into the isolated stations, as they represent its neighbourhood (whereas if a station is surrounded by others, the other stations may cover up for any missing information it might have), and checked if we have enough data</li>
 <li>Then, we looked into the stations within the same proximity</li>
+</ul>
+</section></section>
+<section id="section" class="title-slide slide level1 center">
+<h1></h1>
+We will add a timeline of an example (Prapoutel)
+<div style="display: flex; justify-content: center; align-items: center; height: 100%;">
+<img src="images/Carte1.png" alt="Image centrée" style="max-width: 50%; max-height: 50%;">
+</div>
+</section>
+
+<section id="section-1" class="title-slide slide level1 center">
+<h1></h1>
+<div style="position: absolute; top: 10px; left: 150px;">
+<img src="images/Carte2.png" alt="meteo" style="width: 800px;">
+</div>
+<div style="position: absolute; top: 10px; right: 50px;">
+<img src="images/Carte3.png" alt="meteo" style="width: 800px;">
+</div>
+<p>exemple of the 2 alpes (stations de ski)</p>
+</section>
+
+<section id="type-of-maps" class="title-slide slide level1 center">
+<h1>Type of Maps</h1>
+<ul>
+<li>Map cloropethe</li>
+<li>Heat Map</li>
+</ul>
+<div style="position: absolute; top: 10px; left: 150px;">
+<img src="images/map_cloropethe.jpg" alt="meteo" style="width: 800px;">
+</div>
+<div style="position: absolute; top: 10px; right: 50px;">
+<img src="images/HeatMap.png" alt="meteo" style="width: 800px;">
+</div>
+</section>
+
+<section>
+<section id="planning-we-put-in-the-end" class="title-slide slide level1 center">
+<h1>Planning (we put in the end)</h1>
+<p>#outils qu’on a utilisé et les packages…+logos+ diagramme de gant ## Find relevant data</p>
+<ul>
+<li>Search the meteo france website for data #carte de france, zoom sur isere +capture ecran du site</li>
+<li>Do a quick summary to check its relevance in order to choose one data set</li>
+<li>Repeat for as many data sets as possible</li>
+<li>Find the most appropriate data set</li>
+</ul>
+</section>
+<section id="analyse-data-and-find-enough-extreme-values" class="slide level2 center">
+<h2>Analyse data and find enough extreme values</h2>
+<p>#mettre l’exemple de prapoutel #we are looking for enough data as not all stations have enough data - Extract characteristics of the variables that have these #extreme values - Study and analyse their graphs - Study and interpret their measures</p>
+</section>
+<section id="create-maps-to-visualise-our-research" class="slide level2 center">
+<h2>Create maps to visualise our research</h2>
+<p>#mettre une carte cleuropete et heatmap - Discover softwares to display these maps with a legend - Annotate these maps - Colour the maps according to a colour gradient indicated in the legend</p>
+</section>
+<section id="inform-citizens-of-any-extreme-event-that-might-happen" class="slide level2 center">
+<h2>Inform citizens of any extreme event that might happen</h2>
+<ul>
+<li>Predict these extreme events</li>
+<li>Keep collecting data to have more accurate predictions</li>
 </ul>
 <div class="quarto-auto-generated-content">
 <p><img src="images/uga_logo.png" class="slide-logo"></p>
@@ -416,19 +463,19 @@ CAPITAN Serge, COMBELLES Martin, EL KHOURY Danielle, THIAM Alioune Badara
   </div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="rapport_files/libs/revealjs/dist/reveal.js"></script>
+  <script src="presentation_files/libs/revealjs/dist/reveal.js"></script>
   <!-- reveal.js plugins -->
-  <script src="rapport_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="rapport_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="rapport_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="rapport_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="rapport_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  <script src="presentation_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="presentation_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="presentation_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="presentation_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="presentation_files/libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
-  <script src="rapport_files/libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="rapport_files/libs/revealjs/plugin/search/search.js"></script>
-  <script src="rapport_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="rapport_files/libs/revealjs/plugin/math/math.js"></script>
+  <script src="presentation_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="presentation_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="presentation_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="presentation_files/libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -492,7 +539,7 @@ CAPITAN Serge, COMBELLES Martin, EL KHOURY Danielle, THIAM Alioune Badara
         disableLayout: false,
 
         // Vertical centering of slides
-        center: false,
+        center: true,
 
         // Enables touch navigation on devices with touch input
         touch: true,
@@ -588,9 +635,9 @@ CAPITAN Serge, COMBELLES Martin, EL KHOURY Danielle, THIAM Alioune Badara
         // The "normal" size of the presentation, aspect ratio will be preserved
         // when the presentation is scaled to fit different resolutions. Can be
         // specified using percentage units.
-        width: 1050,
+        width: '150%',
 
-        height: 700,
+        height: '150%',
 
         // Factor of the display size that should remain empty around the content
         margin: 0.1,

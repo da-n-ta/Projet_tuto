@@ -1,0 +1,102 @@
+---
+title: "Extreme Weather Events"
+author: "CAPITAN Serge, COMBELLES Martin, EL KHOURY Danielle, THIAM Alioune  Badara"
+subtitle: "Tutor: ELMETHNI Jonathan"
+#![](~/danielleelkhoury/Github/Projet_tuto/Meteo_isere_pic.jpg){.absolute top=200 left=0 width="350" height="300"}
+format:
+  revealjs:
+    logo: images/uga_logo.png
+    css: assets/style.css
+    responsive: true
+    center: true
+    width: 150%
+    height: 150%
+    resources: images
+    header-includes: |
+      <script src="assets/custom.js" type="application/javascript"></script>
+---
+
+# Introduction
+- **Presentation:** 
+  - Study of extreme values in weather data
+
+  <div style="position: absolute; top: 10px; right: 10px;"> <img src="images/Meteo_isere_pic.jpg" alt="meteo" style="width: 800px;"> </div>
+
+- **Problems:** 
+  - Not enough data
+  - Prediction problems
+
+- **Benefits:** 
+  - Gives warnings of possible natural disasters
+
+
+# Table of Contents
+::: {.incremental}
+- Data Treatment
+- Univariate Analysis
+- Maps
+- Planning
+::: 
+
+
+# Data Treatment
+- Cleaning and regrouping the dataset, handling missing values
+- Divide the dataset by meteo station
+- Identify the maxmimum per year
+
+##  Procedure
+
+- We extracted the maximum of precipitation for each year, each station 
+- We noticed that we have a lot of missing values for a large period of time
+- Upon further inspection, we noticed that some of the stations alternate capting the data ove the years
+- We decided not to treat all stations and choose around 40 stations to study ()
+- We looked into the isolated stations, as they represent its neighbourhood (whereas if a station is surrounded by others, the other stations may cover up for any missing information it might have), and checked if we have enough data 
+- Then, we looked into the stations within the same proximity
+
+# 
+We will add a timeline of an example (Prapoutel)
+<div style="display: flex; justify-content: center; align-items: center; height: 100%;"> <img src="images/Carte1.png" alt="Image centrée" style="max-width: 50%; max-height: 50%;"> </div>
+
+#
+<div style="position: absolute; top: 10px; left: 150px;"> <img src="images/Carte2.png" alt="meteo" style="width: 800px;"> </div>
+
+  <div style="position: absolute; top: 10px; right: 50px;"> <img src="images/Carte3.png" alt="meteo" style="width: 800px;"> </div>
+
+exemple of the 2 alpes (stations de ski)
+
+# Type of Maps
+- Map cloropethe
+- Heat Map
+
+<div style="position: absolute; top: 10px; left: 150px;"> <img src="images/map_cloropethe.jpg" alt="meteo" style="width: 800px;"> </div>
+
+  <div style="position: absolute; top: 10px; right: 50px;"> <img src="images/HeatMap.png" alt="meteo" style="width: 800px;"> </div>
+
+
+# Planning (we put in the end)
+#outils qu'on a utilisé et les packages...+logos+ diagramme de gant
+## Find relevant data
+
+- Search the meteo france website for data 
+#carte de france, zoom sur isere +capture ecran du site
+- Do a quick summary to check its relevance in order to choose one data set
+- Repeat for as many data sets as possible
+- Find the most appropriate data set
+
+
+## Analyse data and find enough extreme values
+#mettre l'exemple de prapoutel
+#we are looking for enough data as not all stations have enough data
+- Extract characteristics of the variables that have these #extreme values
+- Study and analyse their graphs
+- Study and interpret their measures 
+
+## Create maps to visualise our research
+#mettre une carte cleuropete et heatmap
+- Discover softwares to display these maps with a legend
+- Annotate these maps
+- Colour the maps according to a colour gradient indicated in the legend
+
+## Inform citizens of any extreme event that might happen
+- Predict these extreme events 
+- Keep collecting data to have more accurate predictions

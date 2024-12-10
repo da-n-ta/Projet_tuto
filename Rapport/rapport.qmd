@@ -21,10 +21,10 @@ format:
 
 # Table of Contents
 ::: {.incremental}
-- Planning
 - Data Treatment
 - Univariate Analysis
 - Isere Map
+- Planning
 ::: 
 
 # Planning (we put in the end)
