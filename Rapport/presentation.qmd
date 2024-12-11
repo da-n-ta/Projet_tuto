@@ -33,16 +33,32 @@ format:
 # Table of Contents
 ::: {.incremental}
 - Data Treatment
-- Univariate Analysis
-- Maps
+- Procedure
+- Type of Maps
 - Planning
 ::: 
 
 
 # Data Treatment
-- Cleaning and regrouping the dataset, handling missing values
+#
+
+<div style="position: absolute; top: 5px;"> <img src="images/meteo_france.png" alt="meteo" style="width: 2000px;"> </div>
+<div style="position: absolute; top: 400px;"> <img src="images/diff_datasets.png" alt="meteo" style="width: 2000px;"> </div>
+
+
+#
+
+<div style="position: absolute; top: 5px;"> <img src="images/meteo_france.png" alt="meteo" style="width: 2000px;"> </div>
+<div style="position: absolute; top: 400px;"> <img src="images/correct_dataset.png" alt="meteo" style="width: 2000px;"> </div>
+
+
+#
+::: {.incremental}
+- Clean and regroup the dataset
 - Divide the dataset by meteo station
 - Identify the maxmimum per year
+:::
+
 
 ##  Procedure
 
