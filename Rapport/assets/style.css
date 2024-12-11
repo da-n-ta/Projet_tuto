@@ -22,3 +22,18 @@
     width: 100x !important;
 }
 
+.two-images {
+    display: flex; /* Utilisation de flexbox */
+    justify-content: space-between; /* Espacement égal entre les images */
+    align-items: center; /* Aligner verticalement les images */
+    gap: 20px; /* Espacement horizontal entre les images */
+  }
+  
+  .two-images img {
+    width: 90%; /* Chaque image prend 45% de la largeur disponible */
+    max-width: 500px; /* Largeur maximale des images */
+    height: auto; /* Conserver les proportions */
+    border-radius: 8px; /* Coins arrondis */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre */
+  }
+  
