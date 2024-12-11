@@ -1,5 +1,5 @@
 ---
-title: "Extreme Weather Events"
+title: "Extreme Weather Eventserge"
 author: "CAPITAN Serge, COMBELLES Martin, EL KHOURY Danielle, THIAM Alioune  Badara"
 subtitle: "Tutor: ELMETHNI Jonathan"
 #![](~/danielleelkhoury/Github/Projet_tuto/Meteo_isere_pic.jpg){.absolute top=200 left=0 width="350" height="300"}
