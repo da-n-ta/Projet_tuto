@@ -126,11 +126,13 @@ First analyses and modelisation. Creation of the Shiny app
 
 
 # Tools
- - R et Rshiny
- - geojson
- - qmd
- - packages : liste 
- - livre
- - meteofrance
+ - Statistics
+ - Create maps
+ - Generate replicable reporting
+ - Ressources needed whe ncoding
+ - Research obaut Extrem Value Theory
+ - Where do we find data-sets
+
+ <div style="position: absolute; top: 10px; right: 50px;"> <img src="images/tools.png" alt="meteo" style="width: 800px;"> </div>
 
 # Merci à tous
