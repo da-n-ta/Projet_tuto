@@ -126,6 +126,8 @@ First analyses and modelisation. Creation of the Shiny app
 
 
 # Tools
+<br>
+
  - Statistics
  - Create maps
  - Generate replicable reporting
@@ -133,6 +135,8 @@ First analyses and modelisation. Creation of the Shiny app
  - Research obaut Extrem Value Theory
  - Where do we find data-sets
 
- <div style="position: absolute; top: 10px; right: 50px;"> <img src="images/tools.png" alt="meteo" style="width: 800px;"> </div>
+ <div style="position: absolute; top: 10px; right: 200px;"> <img src="images/tools.png" alt="meteo" style="width: 600px;"> </div>
 
-# Merci à tous
+# Thanks for listenning
+
+ - Do you have any questions ?
