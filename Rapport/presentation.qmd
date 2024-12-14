@@ -59,10 +59,11 @@ format:
 
 # Cleaning
 Dataset big into la carte
+<div style="display: flex; justify-content: center; align-items: center; height: 100%;"> <img src="images/Carte1.png" alt="Image centrée" style="max-width: 50%; max-height: 50%;"> </div>
 
 # 
 We will add a timeline of an example (Prapoutel)
-<div style="display: flex; justify-content: center; align-items: center; height: 100%;"> <img src="images/Carte1.png" alt="Image centrée" style="max-width: 50%; max-height: 50%;"> </div>
+<div style="display: flex; justify-content: center; align-items: center; height: 100%;"> <img src="images/CartePrapout.png" alt="Image centrée" style="max-width: 50%; max-height: 50%;"> </div>
 
 # rajouter un détail pour chaque carte
 <div style="position: absolute; top: 10px; left: 150px;"> <img src="images/Carte2.png" alt="meteo" style="width: 800px;"> </div>
@@ -72,6 +73,7 @@ exemple of the 2 alpes (stations de ski)
 
 # modifier la carte pour full rouge
 <div style="position: absolute; top: 10px; right: 50px;"> <img src="images/Carte3.png" alt="meteo" style="width: 800px;"> </div>
+<div style="position: absolute; top: 10px; right: 50px;"> <img src="images/Carte4.png" alt="meteo" style="width: 800px;"> </div>
 
 
 
@@ -82,7 +84,7 @@ exemple of the 2 alpes (stations de ski)
 # modelisation with risk card, Modifier la carte chloropèthe
 
 - rajouter explication
-<div style="position: absolute; top: 10px; left: 150px;"> <img src="images/map_cloropethe.jpg" alt="meteo" style="width: 800px;"> </div>
+<div style="position: absolute; top: 10px; left: 150px;"> <img src="images/choroplèthe.png" alt="meteo" style="width: 800px;"> </div>
 
  - interpolation des données
 
@@ -94,10 +96,9 @@ exemple of the 2 alpes (stations de ski)
 **What do we already have done ?**
 <br>
 Understanding of the subject and first view of the dataset
-ajouter première réunion, mettre des majuscules
 <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%;">
   <figure style="text-align: center;">
-    <img src="images/gantt1.png" alt="meteo" style="width: 700px;">
+    <img src="images/gantt1.png" alt="meteo" style="width: 800px;">
     <figcaption>Work already done</figcaption>
   </figure>
 </div>
@@ -108,20 +109,14 @@ ajouter première réunion, mettre des majuscules
 First analyses and modelisation. Creation of the Shiny app
 <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%;">
   <figure style="text-align: center;">
-    <img src="images/gantt2.png" alt="meteo" style="width: 900px;">
+    <img src="images/gantt2.png" alt="meteo" style="width: 1000px;">
     <figcaption>Next stages of the project</figcaption>
   </figure>
 </div>
 
 
 # Project's mind map
-corriger carte mentale
-extreme value
-maxima
-modelisation of maxima
-modelisation on excess data
-prediction à la place d'interpolation
-détail des maps dans la bulle
+
 <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%;">
   <figure style="text-align: center;">
     <img src="images/ccl.png" alt="meteo" style="width: 1500px;">
