@@ -7,7 +7,7 @@ library(leaflet)
 ################################
 ##"cleaning du jeu de données"##
   # DataSet
-  data <- read.csv(file = "~/Downloads/Q_38_previous-1950-2022_RR-T-Vent.csv/Q_38_previous-1950-2022_RR-T-Vent.csv", sep = ";")
+  data <- read.csv(file = "C:/Users/Serge C/Documents/MIASHS/ProjetTutore/Q_38_previous-1950-2022_RR-T-Vent/Q_38_previous-1950-2022_RR-T-Vent.csv", sep = ";")
   attach(data)
   # Traitement de la variable année
   annee <- substr(AAAAMMJJ, 1,4)
@@ -56,27 +56,35 @@ library(leaflet)
           # frontIsere <- st_as_sf(txtconvert, coords = c("V1", "V2"), crs = 4326)
           # st_write(frontIsere, "isere.shp")
   ## Lecture des données traitées ci-dessus
-  dataconvert <- read.csv(file ="~/Github/Projet_tuto/dataStations.csv", header = TRUE)
-  isere <- st_read("~/Github/Projet_tuto/isere.shp")
+  dataconvert <- read.csv(file ="C:/Users/Serge C/Documents/MIASHS/ProjetTutore/dataStations.csv", header = TRUE)
+  isere <- st_read("C:/Users/Serge C/Documents/MIASHS/ProjetTutore/isere.shp")
   isere <- isere[,-1]
   isere_ligne <- st_union(isere[5:380,1]) %>%
     st_cast("LINESTRING") 
-  geo_data <- st_read("~/Github/Projet_tuto/dataStations.geojson")
+  geo_data <- st_read("C:/Users/Serge C/Documents/MIASHS/ProjetTutore/dataStations.geojson")
   
   # Traitelent des stations qui possèdent des données
-  isol2 <- c(109, 14, 95, 131, 19, 47, 22, 145, 163, 108, 8, 48, 83, 21, 70, 111, 10,105, 179, 24, 68, 69, 67, 41, 20, 132, 158, 96, 97, 123, 32, 23,39,122,133,134,139,128,129,126,127,178,177,42,12,27,102,103,28,135,168,181,73,55,107,30,33,137,64,85,43,153,84,165,38,92,91,104,191,192,193,194,66,81,78,80,79,77,176,15,10,11,18,17,88,62,59,60,61,63,5,1,2,3,4,157)
+  isol2 <- c(109, 14, 95, 131, 19, 47, 22, 145, 163, 108, 8, 48, 83, 21, 70, 111, 10,105)
   nom_isol2 <- station[isol2]
   isol3 <- c(109, 14, 95, 131, 19, 47, 22, 145, 163, 108, 8, 48, 83, 21, 70, 111, 10,105,  68, 67, 20, 96, 123,  23, 39, 122, 133, 139, 128, 178, 42, 12, 102, 28, 168, 181, 73, 55, 107, 30, 33, 137, 85, 153, 165, 38, 92, 91, 104, 191, 66, 81, 15, 10, 88, 62, 5, 1)
   nom_isol3 <- station[isol3]
   # différentiation des données que nous retenons
-  geo_data <- cbind(geo_data,rep(NA,dim(geo_data)[1]))
-  geo_data[,5] <- ifelse(geo_data$Station %in% nom_isol2, 1, 0)
-  geo_data <- cbind(geo_data,rep(NA,dim(geo_data)[1]))
-  geo_data[,5] <- ifelse(geo_data$Station %in% nom_isol3, 1, 0)
+  #Isoler
+  geo_data2 <- cbind(geo_data,rep(NA,dim(geo_data)[1]))
+  geo_data2[,5] <- ifelse(geo_data$Station %in% nom_isol2, 1, 0)
+  #Groupement
+  geo_data3 <- cbind(geo_data,rep(NA,dim(geo_data)[1]))
+  geo_data3[,5] <- ifelse(geo_data$Station %in% nom_isol3, 1, 0)
+  #prapoutel
+  isol4 <- c(1, 3, 4)
+  nom_isol4 <- station[isol4]
+  geo_data4 <- cbind(geo_data,rep(NA,dim(geo_data)[1]))
+  geo_data4[,5] <- ifelse(geo_data4$Station %in% nom_isol4, 1, 0)
 
   # Programmation de la carte de l'isère avec l'ajout des stations
-  carte_station <- leaflet(data = geo_data[which(geo_data$rep.NA..dim.geo_data..1.. == 0),]) %>%
-    addTiles() %>%
+  # Carte des stations
+  carte_station_1 <- leaflet(data = geo_data) %>%
+    addProviderTiles(providers$CartoDB.Positron) %>%
     addCircleMarkers(
       data = isere,
       radius = 0.1,
@@ -84,8 +92,33 @@ library(leaflet)
       stroke = TRUE,
       fillOpacity = 0.7
     ) %>%
-    # #addPolylines(
-    #   #data = isere_ligne,
+    # addPolylines(
+    #   data = isere_ligne,
+    #   color = "black",
+    #   weight = 2,
+    #   opacity = 0.8
+    # ) %>%
+    addCircleMarkers(
+      radius = 5,
+      color = "blue",
+      stroke = FALSE,
+      fillOpacity = 0.7,
+      popup = ~Station
+    ) %>%
+    setView(lng = mean(dataconvert$Long), lat = mean(dataconvert$Lat), zoom = 10)
+  
+  # carte avec les premières stations sélectionnées
+  carte_station_2 <- leaflet(data = geo_data2[which(geo_data2$rep.NA..dim.geo_data..1.. == 0),]) %>%
+    addProviderTiles(providers$CartoDB.Positron) %>%
+    addCircleMarkers(
+      data = isere,
+      radius = 0.1,
+      color = "black",
+      stroke = TRUE,
+      fillOpacity = 0.7
+    ) %>%
+    # addPolylines(
+    #   data = isere_ligne,
     #   color = "black",
     #   weight = 2,
     #   opacity = 0.8
@@ -98,7 +131,75 @@ library(leaflet)
       popup = ~Station
     ) %>%
     addCircleMarkers(
-      data = geo_data[which(geo_data$rep.NA..dim.geo_data..1.. == 1),],
+      data = geo_data2[which(geo_data2$rep.NA..dim.geo_data..1.. == 1),],
+      radius = 5,
+      color = "red",
+      stroke = FALSE,
+      fillOpacity = 0.7,
+      popup = ~Station
+    ) %>%
+    setView(lng = mean(dataconvert$Long), lat = mean(dataconvert$Lat), zoom = 10)
+  
+  
+  # Carte complete
+  carte_station_3 <- leaflet(data = geo_data3[which(geo_data3$rep.NA..dim.geo_data..1.. == 0),]) %>%
+    addProviderTiles(providers$CartoDB.Positron) %>%
+    addCircleMarkers(
+      data = isere,
+      radius = 0.1,
+      color = "black",
+      stroke = TRUE,
+      fillOpacity = 0.7
+    ) %>%
+    # addPolylines(
+    #   data = isere_ligne,
+    #   color = "black",
+    #   weight = 2,
+    #   opacity = 0.8
+    # ) %>%
+    # addCircleMarkers(
+    #   radius = 5,
+    #   color = "blue",
+    #   stroke = FALSE,
+    #   fillOpacity = 0.7,
+    #   popup = ~Station
+    # ) %>%
+    addCircleMarkers(
+      data = geo_data3[which(geo_data3$rep.NA..dim.geo_data..1.. == 1),],
+      radius = 5,
+      color = "red",
+      stroke = FALSE,
+      fillOpacity = 0.7,
+      popup = ~Station
+    ) %>%
+    setView(lng = mean(dataconvert$Long), lat = mean(dataconvert$Lat), zoom = 10)
+  
+  
+  # Carte Prapout
+  carte_station_4 <- leaflet(data = geo_data4[which(geo_data4$rep.NA..dim.geo_data..1.. == 0),]) %>%
+    addProviderTiles(providers$CartoDB.Positron) %>%
+    addCircleMarkers(
+      data = isere,
+      radius = 0.1,
+      color = "black",
+      stroke = TRUE,
+      fillOpacity = 0.7
+    ) %>%
+    # addPolylines(
+    #   data = isere_ligne,
+    #   color = "black",
+    #   weight = 2,
+    #   opacity = 0.8
+    # ) %>%
+    addCircleMarkers(
+      radius = 5,
+      color = "blue",
+      stroke = FALSE,
+      fillOpacity = 0.7,
+      popup = ~Station
+    ) %>%
+    addCircleMarkers(
+      data = geo_data4[which(geo_data4$rep.NA..dim.geo_data..1.. == 1),],
       radius = 5,
       color = "red",
       stroke = FALSE,
@@ -107,7 +208,10 @@ library(leaflet)
     ) %>%
     setView(lng = mean(dataconvert$Long), lat = mean(dataconvert$Lat), zoom = 10)
                   
-  carte_station
+  carte_station_1
+  carte_station_2
+  carte_station_3
+  carte_station_4
   
 
 #####################################
@@ -132,8 +236,10 @@ library(leaflet)
   isol2 <- c(109, 14, 95, 131, 19, 47, 22, 145, 163, 108, 8, 48, 83, 21, 70, 111, 10,105, 179, 24, 68, 69, 67, 41, 20, 132, 158, 96, 97, 123, 32, 23,39,122,133,134,139,128,129,126,127,178,177,42,12,27,102,103,28,135,168,181,73,55,107,30,33,137,64,85,43,153,84,165,38,92,91,104,191,192,193,194,66,81,78,80,79,77,176,15,10,11,18,17,88,62,59,60,61,63,5,1,2,3,4,157)
   nom_isol2 <- station[isol2]
   
-  geo_data <- cbind(geo_data,rep(NA,dim(geo_data)[1]))
-  geo_data[,5] <- ifelse(geo_data$Station %in% nom_isol2, 1, 0)
+  isol4 <- c(1, 3, 4)
+  nom_isol4 <- station[isol4]
+  geo_data4 <- cbind(geo_data4,rep(NA,dim(geo_data4)[1]))
+  geo_data4[,5] <- ifelse(geo_data4$Station %in% nom_isol4, 1, 0)
   
   df <- matrix(-1, nrow = 73, ncol = length(isol))
   i <- 1
