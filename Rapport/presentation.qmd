@@ -1,8 +1,11 @@
 ---
 title: "Extreme Weather Events"
 author: "CAPITAN Serge, COMBELLES Martin, EL KHOURY Danielle, THIAM Alioune  Badara"
-subtitle: "Tutor: ELMETHNI Jonathan"
-#![](~/danielleelkhoury/Github/Projet_tuto/Meteo_isere_pic.jpg){.absolute top=200 left=0 width="350" height="300"}
+subtitle: |
+   <strong>M1 SSD</strong><br>
+   <em>Soutenance </em><br> 
+   20/12/2024<br>  
+   Tutor: ELMETHNI Jonathan
 format:
   revealjs:
     logo: images/uga_logo.png
@@ -15,6 +18,7 @@ format:
     header-includes: |
       <script src="assets/custom.js" type="application/javascript"></script>
 ---
+
 
 # Introduction
 - **Presentation:** 
@@ -57,9 +61,13 @@ format:
 <div style="position: absolute; top: 400px;"> <img src="images/correct_dataset.png" alt="meteo" style="width: 2000px;"> </div>
 
 
-# Cleaning
-Dataset big into la carte
-<div style="display: flex; justify-content: center; align-items: center; height: 100%;"> <img src="images/Carte1.png" alt="Image centrée" style="max-width: 50%; max-height: 50%;"> </div>
+# 
+<div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%;">
+  <figure style="text-align: center;">
+    <img src="images/clean_data.png" alt="meteo" style="width: 2500px;">
+  </figure>
+</div>
+
 
 # 
 We will add a timeline of an example (Prapoutel)

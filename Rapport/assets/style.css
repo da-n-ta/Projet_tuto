@@ -23,10 +23,11 @@
 }
 
 .two-images {
-    display: flex; /* Utilisation de flexbox */
-    justify-content: space-between; /* Espacement égal entre les images */
-    align-items: center; /* Aligner verticalement les images */
-    gap: 20px; /* Espacement horizontal entre les images */
+    display: flex; /* Use flexbox for layout */
+    justify-content: center; /* Center the images horizontally */
+    align-items: center; /* Center the images vertically */
+    gap: 40px; /* Increase spacing between images */
+    margin: 0 auto; /* Center the container on the slide */
   }
   
   .two-images img {
@@ -35,5 +36,28 @@
     height: auto; /* Conserver les proportions */
     border-radius: 8px; /* Coins arrondis */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre */
+  }
+  .three-images {
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Equal spacing between images */
+    align-items: center; /* Vertical alignment of images */
+    gap: 20px; /* Horizontal spacing between images */
+  }
+  
+  .three-images img {
+    max-width: 100%; /* Ensure images don't overflow */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow */
+  }
+  
+  .three-images img.middle {
+    flex: 1; /* Smaller size for the middle image */
+    max-width: 300px; /* Limit the width of the middle image */
+  }
+  
+  .three-images img.large {
+    flex: 2; /* Larger size for the side images */
+    max-width: 500px; /* Limit the width of the side images */
   }
   
