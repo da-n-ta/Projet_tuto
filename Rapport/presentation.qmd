@@ -3,7 +3,7 @@ title: "Extreme Weather Events"
 author: "CAPITAN Serge, COMBELLES Martin, EL KHOURY Danielle, THIAM Alioune  Badara"
 subtitle: |
    <strong>M1 SSD</strong><br>
-   <em>Soutenance </em><br> 
+   <em>Mid Project Soutenance </em><br> 
    20/12/2024<br>  
    Tutor: ELMETHNI Jonathan
 format:
@@ -101,9 +101,9 @@ exemple of the 2 alpes (stations de ski)
  - travail sur les coordonnées
 
 # Planning of the project
-**What do we already have done ?**
+**What have we already have done ?**
 <br>
-Understanding of the subject and first view of the dataset
+Comprehension of the subject and first view of the dataset
 <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%;">
   <figure style="text-align: center;">
     <img src="images/gantt1.png" alt="meteo" style="width: 800px;">
@@ -114,7 +114,8 @@ Understanding of the subject and first view of the dataset
 # Planning of the project
 **What's next ?**
 <br>
-First analyses and modelisation. Creation of the Shiny app
+- First analysis and modelisation <br>
+- Creation of the Shiny app
 <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%;">
   <figure style="text-align: center;">
     <img src="images/gantt2.png" alt="meteo" style="width: 1000px;">
@@ -139,12 +140,12 @@ First analyses and modelisation. Creation of the Shiny app
  - Statistics
  - Create maps
  - Generate replicable reporting
- - Ressources needed whe ncoding
- - Research obaut Extrem Value Theory
- - Where do we find data-sets
+ - Code with needed ressources
+ - Research about Extreme Value Theory
+ - Look for data sets
 
  <div style="position: absolute; top: 10px; right: 200px;"> <img src="images/tools.png" alt="meteo" style="width: 600px;"> </div>
 
-# Thanks for listenning
+# Thanks for listening
 
- - Do you have any questions ?
+ - Any questions ?
