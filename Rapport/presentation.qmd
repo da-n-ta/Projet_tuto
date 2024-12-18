@@ -17,6 +17,7 @@ format:
     resources: images
     header-includes: |
       <script src="assets/custom.js" type="application/javascript"></script>
+theme: Serif
 ---
 
 
