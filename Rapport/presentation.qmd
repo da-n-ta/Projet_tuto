@@ -87,22 +87,27 @@ exemple of the 2 alpes (stations de ski)
 
 
 # Type of Maps
-- Map cloropethe
+- Map choroplethe
 - Heat Map
 
-# modelisation with risk card, Modifier la carte chloropèthe
+# Modelisation with risk card
 
-- rajouter explication
-<div style="position: absolute; top: 10px; left: 150px;"> <img src="images/choroplèthe.png" alt="meteo" style="width: 800px;"> </div>
+ <div style=" position: absolute; top: 100px; left: 50px;">
+  <figure style="width: 800px;">
+    <img src="images/choroplèthe.png" alt="meteo" style="width: 800px;">
+    <figcaption>Interpolation of models</figcaption>
+  </figure>
+</div>
 
- - interpolation des données
-
-  <div style="position: absolute; top: 10px; right: 50px;"> <img src="images/HeatMap.png" alt="meteo" style="width: 800px;"> </div>
-
- - travail sur les coordonnées
+<div style=" position: absolute; top: 100px; right: 50px;">
+  <figure style="width: 600px;">
+    <img src="images/HeatMap.png" alt="meteo" style="width: 1000px;">
+    <figcaption>Coordinates anlysis</figcaption>
+  </figure>
+</div>
 
 # Planning of the project
-**What have we already have done ?**
+**What have we already done ?**
 <br>
 Comprehension of the subject and first view of the dataset
 <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%;">
