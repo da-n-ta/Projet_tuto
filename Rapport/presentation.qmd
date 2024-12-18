@@ -72,27 +72,27 @@ theme: Serif
 
 ##  Example of Prapoutel's Stations
 
-<div style="position: absolute; top: 180px; right: 50px;"> 
+<div style="position: absolute; top: 100px; right: 50px;"> 
 <figure>
-    <img src="images/cartePrapout.png" alt="Début du jeu" style="width:800px;">
+    <img src="images/cartePrapout.png" alt="Début du jeu" style="width:700px;">
     <figcaption>Three Prapoutel's stations</figcaption>
   </figure>
 </div>
 
 ##  Example of Prapoutel's Stations
 
-<div style="position: absolute; top: 180px; left: 150px;"> 
+<div style="position: absolute; top: 100px; left: 50px;"> 
 <figure>
-    <img src="images/timeline.png" alt="1er affichage" style="width:800px;">
+    <img src="images/timeline.png" alt="1er affichage" style="width:700px;">
     <figcaption>Precipitation measurement at Prapoutel</figcaption>
   </figure>
 </div>
 
 
 
-<div style="position: absolute; top: 180px; right: 50px;"> 
+<div style="position: absolute; top: 100px; right: 50px;"> 
 <figure>
-    <img src="images/cartePrapout.png" alt="Début du jeu" style="width:800px;">
+    <img src="images/cartePrapout.png" alt="Début du jeu" style="width:700px;">
     <figcaption>Three Prapoutel's stations</figcaption>
   </figure>
 </div>
@@ -107,18 +107,18 @@ theme: Serif
  - Covering all of Isere
  
 :::
-<div style="position: absolute; top: 180px; right: 50px;"> 
+<div style="position: absolute; top: 100px; right: 50px;"> 
 <figure>
-    <img src="images/carte2.png" alt="Début du jeu" style="width:800px;">
+    <img src="images/carte2.png" alt="Début du jeu" style="width:700px;">
     <figcaption>Isolated Stations</figcaption>
   </figure>
 </div>
 
 ## Station's Sorting
 
-<div style="position: absolute; top: 180px; right: 50px;"> 
+<div style="position: absolute; top: 100px; right: 50px;"> 
 <figure>
-    <img src="images/carte2.png" alt="Début du jeu" style="width:800px;">
+    <img src="images/carte2.png" alt="Début du jeu" style="width:700px;">
     <figcaption>Isolated Stations</figcaption>
   </figure>
 </div>
@@ -127,18 +127,18 @@ theme: Serif
 
 
 ## Station's Sorting
-<div style="position: absolute; top: 180px; left: 150px;"> 
+<div style="position: absolute; top: 100px; left: 50px;"> 
 <figure>
-    <img src="images/carte3.png" alt="1er affichage" style="width:800px;">
+    <img src="images/carte3.png" alt="1er affichage" style="width:700px;">
     <figcaption>Selected (red) and not selected (blue) Stations</figcaption>
   </figure>
 </div>
 
 
 
-<div style="position: absolute; top: 180px; right: 50px;"> 
+<div style="position: absolute; top: 100px; right: 50px;"> 
 <figure>
-    <img src="images/carte2.png" alt="Début du jeu" style="width:800px;">
+    <img src="images/carte2.png" alt="Début du jeu" style="width:700px;">
     <figcaption>Isolated Stations</figcaption>
   </figure>
 </div>
@@ -152,9 +152,9 @@ theme: Serif
  - => approximately 1.000.000 rows of data.
 :::
 
-<div style="position: absolute; top: 180px; right: 50px;"> 
+<div style="position: absolute; top: 100px; right: 50px;"> 
 <figure>
-    <img src="images/carte4.png" alt="Début du jeu" style="width:800px;">
+    <img src="images/carte4.png" alt="Début du jeu" style="width:700px;">
     <figcaption>Selected Stations</figcaption>
   </figure>
 </div>
@@ -186,7 +186,7 @@ theme: Serif
 Comprehension of the subject and first view of the dataset
 <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%;">
   <figure style="text-align: center;">
-    <img src="images/gantt1.png" alt="meteo" style="width: 800px;">
+    <img src="images/gantt1.png" alt="meteo" style="width: 1000px;">
     <figcaption>Work already done</figcaption>
   </figure>
 </div>
@@ -198,7 +198,7 @@ Comprehension of the subject and first view of the dataset
 - Creation of the Shiny app
 <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%;">
   <figure style="text-align: center;">
-    <img src="images/gantt2.png" alt="meteo" style="width: 1000px;">
+    <img src="images/gantt2.png" alt="meteo" style="width: 1200px;">
     <figcaption>Next stages of the project</figcaption>
   </figure>
 </div>
