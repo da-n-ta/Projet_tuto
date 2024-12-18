@@ -70,20 +70,94 @@ theme: Serif
 </div>
 
 
-# 
-We will add a timeline of an example (Prapoutel)
-<div style="display: flex; justify-content: center; align-items: center; height: 100%;"> <img src="images/CartePrapout.png" alt="Image centrée" style="max-width: 50%; max-height: 50%;"> </div>
+##  Example of Prapoutel's Station
 
-# rajouter un détail pour chaque carte
-<div style="position: absolute; top: 10px; left: 150px;"> <img src="images/Carte2.png" alt="meteo" style="width: 800px;"> </div>
+<div style="position: absolute; top: 180px; right: 50px;"> 
+<figure>
+    <img src="images/cartePrapout.png" alt="Début du jeu" style="width:800px;">
+    <figcaption>Three Prapoutels' stations</figcaption>
+  </figure>
+</div>
 
- - pour introduire la suite
-exemple of the 2 alpes (stations de ski)
+##  Example of Prapoutel's Station
 
-# modifier la carte pour full rouge
-<div style="position: absolute; top: 10px; right: 50px;"> <img src="images/Carte3.png" alt="meteo" style="width: 800px;"> </div>
-<div style="position: absolute; top: 10px; right: 50px;"> <img src="images/Carte4.png" alt="meteo" style="width: 800px;"> </div>
+<div style="position: absolute; top: 180px; left: 150px;"> 
+<figure>
+    <img src="images/timeline.png" alt="1er affichage" style="width:800px;">
+    <figcaption>Precipitation measurement at Prapoutel</figcaption>
+  </figure>
+</div>
 
+
+
+<div style="position: absolute; top: 180px; right: 50px;"> 
+<figure>
+    <img src="images/cartePrapout.png" alt="Début du jeu" style="width:800px;">
+    <figcaption>Three Prapoutels' stations</figcaption>
+  </figure>
+</div>
+
+
+## Station's Sorting
+<br>
+
+:::{.incremental}
+ - We have 24 isolated stations 
+ - 18 have enough data 
+ - Covering all of Isere
+ 
+:::
+<div style="position: absolute; top: 180px; right: 50px;"> 
+<figure>
+    <img src="images/carte2.png" alt="Début du jeu" style="width:800px;">
+    <figcaption>Isolated Stations</figcaption>
+  </figure>
+</div>
+
+## Station's Sorting
+
+<div style="position: absolute; top: 180px; right: 50px;"> 
+<figure>
+    <img src="images/carte2.png" alt="Début du jeu" style="width:800px;">
+    <figcaption>Isolated Stations</figcaption>
+  </figure>
+</div>
+    
+
+
+
+## Station's Sorting
+<div style="position: absolute; top: 180px; left: 150px;"> 
+<figure>
+    <img src="images/carte3.png" alt="1er affichage" style="width:800px;">
+    <figcaption>Selected (red) and not selected (blue) Stations</figcaption>
+  </figure>
+</div>
+
+
+
+<div style="position: absolute; top: 180px; right: 50px;"> 
+<figure>
+    <img src="images/carte2.png" alt="Début du jeu" style="width:800px;">
+    <figcaption>Isolated Stations</figcaption>
+  </figure>
+</div>
+
+# Chosen Stations
+<br>
+
+:::{.incremental}
+ - 58 stations  
+ - 50 years of data (from 1972 to 2022)
+ - => approximately 1.000.000 rows of data.
+:::
+
+<div style="position: absolute; top: 180px; right: 50px;"> 
+<figure>
+    <img src="images/carte4.png" alt="Début du jeu" style="width:800px;">
+    <figcaption>Selected Stations</figcaption>
+  </figure>
+</div>
 
 
 # Type of Maps
