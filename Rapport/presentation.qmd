@@ -160,7 +160,7 @@ theme: Serif
 </div>
 
 
-# Type of Maps
+# Data-Visualisation
 - Map choroplethe
 - Heat Map
 
