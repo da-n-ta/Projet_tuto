@@ -8,6 +8,7 @@ subtitle: |
    Tutor: ELMETHNI Jonathan
 format:
   revealjs:
+    slide-number: true
     logo: images/uga_logo.png
     css: assets/style.css
     responsive: true
