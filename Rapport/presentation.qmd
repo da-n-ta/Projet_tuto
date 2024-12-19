@@ -170,16 +170,32 @@ theme: Serif
  <div style=" position: absolute; top: 100px; left: 50px;">
   <figure style="width: 800px;">
     <img src="images/choroplèthe.png" alt="meteo" style="width: 800px;">
-    <figcaption>Prediction per geographic zone <br>
-    Interpolation of models</figcaption>
+    <figcaption> 
+    Choroplethe map
+    <br>
+    Divided in multiple zone
+    <br>
+    Prediction per geographic zone 
+    <br>
+    Interpolation of models
+    <br>
+    Colors depend of the zone prediction
+    </figcaption>
   </figure>
 </div>
 
 <div style=" position: absolute; top: 100px; right: 50px;">
   <figure style="width: 600px;">
     <img src="images/HeatMap.png" alt="meteo" style="width: 1000px;">
-    <figcaption>Different for each point <br>
-    Coordinates analysis</figcaption>
+    <figcaption>
+    Heat map
+    <br>
+    Prediction for each point 
+    <br>
+    Coordinates analysis (X and Y)
+    <br>
+    Scale of color
+    </figcaption>
   </figure>
 </div>
 
