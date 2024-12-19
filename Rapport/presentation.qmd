@@ -104,7 +104,7 @@ theme: Serif
 :::{.incremental}
  - We have 24 isolated stations 
  - 18 have enough data 
- - Covering all of Isere
+ - Covering all of Isère
  
 :::
 <div style="position: absolute; top: 100px; right: 50px;"> 
@@ -169,14 +169,16 @@ theme: Serif
  <div style=" position: absolute; top: 100px; left: 50px;">
   <figure style="width: 800px;">
     <img src="images/choroplèthe.png" alt="meteo" style="width: 800px;">
-    <figcaption>Interpolation of models</figcaption>
+    <figcaption>Prediction per geographic zone <br>
+    Interpolation of models</figcaption>
   </figure>
 </div>
 
 <div style=" position: absolute; top: 100px; right: 50px;">
   <figure style="width: 600px;">
     <img src="images/HeatMap.png" alt="meteo" style="width: 1000px;">
-    <figcaption>Coordinates anlysis</figcaption>
+    <figcaption>Different for each point <br>
+    Coordinates analysis</figcaption>
   </figure>
 </div>
 
