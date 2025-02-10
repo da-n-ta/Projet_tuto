@@ -10,7 +10,7 @@ library(dplyr)
 ################################
 ##"cleaning du jeu de données"##
   # DataSet
-  data <- read.csv(file = "C:/Users/Serge C/Documents/MIASHS/ProjetTutore/Q_38_previous-1950-2022_RR-T-Vent/Q_38_previous-1950-2022_RR-T-Vent.csv", sep = ";")
+  data <- read.csv(file = "Q_38_previous-1950-2022_RR-T-Vent.csv", sep = ";")
   attach(data)
   # Traitement de la variable année
   annee <- substr(AAAAMMJJ, 1,4)
@@ -59,12 +59,12 @@ library(dplyr)
           # frontIsere <- st_as_sf(txtconvert, coords = c("V1", "V2"), crs = 4326)
           # st_write(frontIsere, "isere.shp")
   ## Lecture des données traitées ci-dessus
-  dataconvert <- read.csv(file ="C:/Users/Serge C/Documents/MIASHS/ProjetTutore/dataStations.csv", header = TRUE)
-  isere <- st_read("C:/Users/Serge C/Documents/MIASHS/ProjetTutore/isere.shp")
+  dataconvert <- read.csv(file ="dataStations.csv", header = TRUE)
+  isere <- st_read("isere.shp")
   isere <- isere[,-1]
   isere_ligne <- st_union(isere[5:380,1]) %>%
     st_cast("LINESTRING") 
-  geo_data <- st_read("C:/Users/Serge C/Documents/MIASHS/ProjetTutore/dataStations.geojson")
+  geo_data <- st_read("dataStations.geojson")
   
   # Traitelent des stations qui possèdent des données
   isol2 <- c(109, 14, 95, 131, 19, 47, 22, 145, 163, 108, 8, 48, 83, 21, 70, 111, 10,105)
@@ -229,7 +229,7 @@ library(dplyr)
       stat5 <- geo_data3$RR...Precipitation[which(geo_data3$Station == station[num_station[5]])]
       stat6 <- geo_data3$RR...Precipitation[which(geo_data3$Station == station[num_station[6]])]
       # Merge
-      stat_merge <- coalesce(stat1, stat2, stat3, stat4, stat5, stat6)
+      stat_merge <- do.call(pmax, c(list(stat1, stat2, stat3, stat4, stat5, stat6), na.rm = TRUE))
       
     } else if (nb_station == 5){
       # Recup Station
@@ -239,7 +239,7 @@ library(dplyr)
       stat4 <- geo_data3$RR...Precipitation[which(geo_data3$Station == station[num_station[4]])]
       stat5 <- geo_data3$RR...Precipitation[which(geo_data3$Station == station[num_station[5]])]
       # Merge
-      stat_merge <- coalesce(stat1, stat2, stat3, stat4, stat5)
+      stat_merge <- do.call(pmax, c(list(stat1, stat2, stat3, stat4, stat5), na.rm = TRUE))
       
     } else if (nb_station == 4){
       # Recup Station
@@ -248,27 +248,27 @@ library(dplyr)
       stat3 <- geo_data3$RR...Precipitation[which(geo_data3$Station == station[num_station[3]])]
       stat4 <- geo_data3$RR...Precipitation[which(geo_data3$Station == station[num_station[4]])]
       # Merge
-      stat_merge <- coalesce(stat1, stat2, stat3, stat4)
+      stat_merge <- do.call(pmax, c(list(stat1, stat2, stat3, stat4), na.rm = TRUE))
     } else if (nb_station == 3){
       # Recup Station
       stat1 <- geo_data3$RR...Precipitation[which(geo_data3$Station == station[num_station[1]])]
       stat2 <- geo_data3$RR...Precipitation[which(geo_data3$Station == station[num_station[2]])]
       stat3 <- geo_data3$RR...Precipitation[which(geo_data3$Station == station[num_station[3]])]
       # Merge
-      stat_merge <- coalesce(stat1, stat2, stat3)
+      stat_merge <- do.call(pmax, c(list(stat1, stat2, stat3), na.rm = TRUE))
       
     } else if (nb_station == 2){
       # Recup Station
       stat1 <- geo_data3$RR...Precipitation[which(geo_data3$Station == station[num_station[1]])]
       stat2 <- geo_data3$RR...Precipitation[which(geo_data3$Station == station[num_station[2]])]
       # Merge
-      stat_merge <- coalesce(stat1, stat2)
+      stat_merge <- do.call(pmax, c(list(stat1, stat2), na.rm = TRUE))
       
     } else {
       # Recup Station
       stat1 <- geo_data3$RR...Precipitation[which(geo_data3$Station == station[num_station[1]])]
       # Merge
-      stat_merge <- stat1
+      stat_merge <- do.call(pmax, c(list(stat1), na.rm = TRUE))
     }
     return(stat_merge)
   }
@@ -280,7 +280,7 @@ library(dplyr)
   GEOMETRY <- c()
   
   # Manipulation avec les stations
-  num_station <- c(105)
+  num_station <- c(1, 2, 3, 4, 157)
   n <- length(num_station)
   stat_merge <- merge_utlime(num_station,n)
   
@@ -289,7 +289,7 @@ library(dplyr)
   ANNEE <- c(ANNEE, periode)
   PLUIE <- c(PLUIE, stat_merge)
   GEOMETRY <- c(GEOMETRY, rep(geo_data3$geometry[which(geo_data3$Station == station[num_station[1]])][1], length(stat_merge)))
-  
+ 
   # Traitement des dataframes
   df_ult <- cbind(NOM,ANNEE,PLUIE,GEOMETRY)
   df <- as.data.frame(df_ult)
@@ -310,9 +310,9 @@ library(dplyr)
   }
   # Ecriture du fichier
   df3_geo <- st_as_sf(df3, coords = c("LONG", "LAT"), crs = 4326)
-  st_write(df3_geo, "dataStationsGroupe.geojson", driver = "GeoJSON")
+  st_write(df3_geo, "dataStationsGroupeNEW.geojson", driver = "GeoJSON")
   # Lecture du fichier
-  geo_data_groupe <- st_read("C:/Users/Serge C/Documents/MIASHS/ProjetTutore/dataStationsGroupe.geojson")
+  geo_data_groupe <- st_read("dataStationsGroupeNEW.geojson")
 
 # ------------------------------------------------------------------------------------------------
   # carte de ksi
@@ -437,12 +437,12 @@ library(dplyr)
 ##"Traitements et anlyses partiels"##
   
   # Visualisation des enregistrements différés
-  Prapout_pipay <-geo_data[which(geo_data$Station == "Prapoutel Pipay" ),]
-  Prapout <-geo_data[which(geo_data$Station == "Prapoutel" ),]
-  PRAPOUT <-geo_data[which(geo_data$Station == "PRAPOUTEL" ),]
+  Prapout_pipay <-geo_data[which(geo_data$Station == "CHASSE" ),]
+  Prapout <-geo_data[which(geo_data$Station == "LUZINAY BOURG" ),]
+  PRAPOUT <-geo_data[which(geo_data$Station == "LUZINAY" ),]
   # Table globale
   comparaison <- cbind(PRAPOUT$Annee, PRAPOUT$RR...Precipitation, Prapout$RR...Precipitation, Prapout_pipay$RR...Precipitation)
-  colnames(comparaison) <- c("Annee", "PRAPOUTEL" , "Prapoutel", "Prapoutel Pipay")
+  colnames(comparaison) <- c("Annee" , "LUZINAY", "LUZINAY BOURG", "CHASSE")
   View(comparaison)
   View(geo_data[which(geo_data$Station == "LE VERSOUD"),])
   View(geo_data[which(geo_data$Station == "GRENOBLE - LVD"),])
