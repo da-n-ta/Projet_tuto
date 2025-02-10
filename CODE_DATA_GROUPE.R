@@ -45,7 +45,7 @@ library(dplyr)
     
       # Export des données en CSV et en GeoJSON
       write.csv(Mn, file = "dataStations.csv", row.names = FALSE)
-      dataconvert <- read.csv(file ="C:/Users/Serge C/Documents/MIASHS/ProjetTutore/dataStations.csv", header = TRUE)
+      dataconvert <- read.csv(file ="dataStations.csv", header = TRUE)
       geo_data <- st_as_sf(dataconvert, coords = c("Long", "Lat"), crs = 4326)
       st_write(geo_data, "dataStations.geojson", driver = "GeoJSON")
       
@@ -67,7 +67,7 @@ library(dplyr)
   geo_data <- st_read("dataStations.geojson")
   
   # Traitelent des stations qui possèdent des données
-  isol2 <- c(109, 14, 95, 131, 19, 47, 22, 145, 163, 108, 8, 48, 83, 21, 70, 111, 10,105)
+  isol2 <- c(109, 14, 95, 131, 19, 47, 22, 145, 163, 108, 8, 48, 83, 21, 70, 111)
   nom_isol2 <- station[isol2]
   isol3 <- c(109, 14, 95, 131, 19, 47, 22, 145, 163, 108, 8, 48, 83, 21, 70, 111, 10,105,  68, 67, 20, 96, 123,  23, 39, 122, 133, 139, 128, 178, 42, 12, 102, 28, 168, 181, 73, 55, 107, 30, 33, 137, 85, 153, 165, 38, 92, 91, 104, 191, 66, 81, 15, 10, 88, 62, 5, 1)
   nom_isol3 <- station[isol3]
@@ -268,7 +268,7 @@ library(dplyr)
       # Recup Station
       stat1 <- geo_data3$RR...Precipitation[which(geo_data3$Station == station[num_station[1]])]
       # Merge
-      stat_merge <- do.call(pmax, c(list(stat1), na.rm = TRUE))
+      stat_merge <- stat1
     }
     return(stat_merge)
   }
@@ -278,9 +278,10 @@ library(dplyr)
   ANNEE <- c()
   PLUIE <- c()
   GEOMETRY <- c()
+
   
   # Manipulation avec les stations
-  num_station <- c(1, 2, 3, 4, 157)
+  num_station <- c(8)
   n <- length(num_station)
   stat_merge <- merge_utlime(num_station,n)
   
@@ -310,9 +311,9 @@ library(dplyr)
   }
   # Ecriture du fichier
   df3_geo <- st_as_sf(df3, coords = c("LONG", "LAT"), crs = 4326)
-  st_write(df3_geo, "dataStationsGroupeNEW.geojson", driver = "GeoJSON")
+  st_write(df3_geo, "dataStationsGroupeFINAL.geojson", driver = "GeoJSON")
   # Lecture du fichier
-  geo_data_groupe <- st_read("dataStationsGroupeNEW.geojson")
+  geo_data_groupe <- st_read("dataStationsGroupeFINAL.geojson")
 
 # ------------------------------------------------------------------------------------------------
   # carte de ksi
