@@ -320,7 +320,7 @@ library(dplyr)
   
   # carte avec les premières stations sélectionnées
   #traitement des données
-  data = st_read("dataStationsGroupe.geojson")
+  data = st_read("dataStationsGroupeFINAL.geojson")
   data_ksi = data.frame(unique(data$NOM))
   data_ksi = as.data.frame(data_ksi)
   # Calcul des ksi par GEV avec une méthode MLE
