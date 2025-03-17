@@ -7,7 +7,7 @@ library(leaflet)
 ################################
 ##"cleaning du jeu de données"##
   # DataSet
-  data <- read.csv(file = "C:/Users/Serge C/Documents/MIASHS/ProjetTutore/Q_38_previous-1950-2022_RR-T-Vent/Q_38_previous-1950-2022_RR-T-Vent.csv", sep = ";")
+  data <- read.csv(file = "Q_38_previous-1950-2022_RR-T-Vent.csv", sep = ";")
   attach(data)
   # Traitement de la variable année
   annee <- substr(AAAAMMJJ, 1,4)
@@ -56,15 +56,15 @@ library(leaflet)
           # frontIsere <- st_as_sf(txtconvert, coords = c("V1", "V2"), crs = 4326)
           # st_write(frontIsere, "isere.shp")
   ## Lecture des données traitées ci-dessus
-  dataconvert <- read.csv(file ="C:/Users/Serge C/Documents/MIASHS/ProjetTutore/dataStations.csv", header = TRUE)
-  isere <- st_read("C:/Users/Serge C/Documents/MIASHS/ProjetTutore/isere.shp")
+  dataconvert <- read.csv(file ="dataStations.csv", header = TRUE)
+  isere <- st_read("isere.shp")
   isere <- isere[,-1]
   isere_ligne <- st_union(isere[5:380,1]) %>%
     st_cast("LINESTRING") 
-  geo_data <- st_read("C:/Users/Serge C/Documents/MIASHS/ProjetTutore/dataStations.geojson")
+  geo_data <- st_read("dataStations.geojson")
   
   # Traitelent des stations qui possèdent des données
-  isol2 <- c(109, 14, 95, 131, 19, 47, 22, 145, 163, 108, 8, 48, 83, 21, 70, 111, 10,105)
+  isol2 <- c(109, 14, 95, 131, 19, 47, 22, 145, 163, 108, 8, 48, 83, 21, 70, 111)
   nom_isol2 <- station[isol2]
   isol3 <- c(109, 14, 95, 131, 19, 47, 22, 145, 163, 108, 8, 48, 83, 21, 70, 111, 10,105,  68, 67, 20, 96, 123,  23, 39, 122, 133, 139, 128, 178, 42, 12, 102, 28, 168, 181, 73, 55, 107, 30, 33, 137, 85, 153, 165, 38, 92, 91, 104, 191, 66, 81, 15, 10, 88, 62, 5, 1)
   nom_isol3 <- station[isol3]
