@@ -283,7 +283,7 @@ poly <- st_intersects(sf_stations, sf_cantons)
 
 sf_stations$canton <- sapply(poly, function(x) if (length(x) > 0) sf_cantons$geometry[x] else NA)
 
--------predictions--------
+# -------predictions--------
   
   n <- 10
 
@@ -304,8 +304,7 @@ for (i in 1:length(nom)){
 
 # ------------------------------------------------------------------------------
 # palette de couleur delon les valeurs predict
-valeurs <- as.numeric(res[,2])
-palette <- colorNumeric(palette = "Blues", domain = valeurs)
+
 
 CANTONS_sf <- st_as_sf(CANTONS)
 
@@ -326,7 +325,25 @@ sf_stations_summarized <- sf_stations %>%
 resultat_cantons = resultat %>% 
   left_join(sf_stations_summarized, by = "geometry")
 
+for (i in 1:length(resultat_cantons$canton)) {
+  resultat_cantons[i,5] = 
+    max(resultat_cantons$PRED[which(resultat_cantons$canton == resultat_cantons$canton[i])])
+}
 
+colnames(resultat_cantons)[5] = "pred_canton"
+colnames(sf_cantons)[2] = "canton"
+colnames(resultat_cantons)[4] = "canton"
+sf_cantons$st_canton = st_geometry(sf_cantons$canton)
+
+
+for (i in 1:nrow(sf_cantons)) {
+  sf_cantons[i,4] = max(resultat_cantons$pred_canton[which(resultat_cantons$canton ==sf_cantons$canton[i])])
+}
+
+colnames(sf_cantons)[4] = "pred_canton"
+
+valeurs <- as.numeric(sf_cantons$pred_canton)
+palette <- colorNumeric(palette = "Blues", domain = valeurs)
 
 leaflet(data = CANTONS_sf) %>%
   addTiles() %>%  # Fond de carte OpenStreetMap
