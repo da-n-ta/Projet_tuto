@@ -3,6 +3,7 @@ library(sf)
 library(leaflet)
 library(dplyr)
 library(RColorBrewer)
+library(ggplot2)
 
 # Import des données
 # carte de ksi
@@ -259,7 +260,7 @@ for (i in 1:length(nom)){
 
 
  # ------------------------------------------------------------------------------
-# Zone cart choroplèthe
+# Zone carte choroplèthe
 # rajouter nom de la station plsssss
 stations <- data$geometry
 CANTONS <- cantons$geometry
@@ -361,4 +362,52 @@ leaflet(data = CANTONS_sf) %>%
     title = "Prédiction", 
     position = "bottomright"
   )
+# ------------------------------------------------------------------------------
+# heatmap
+#transformer les pts bordures en polugone
+isere_polygon <- st_polygon(list(st_coordinates(isere))) %>% 
+  st_sfc(crs = st_crs(isere)) %>% 
+  st_sf()
 
+#convertir en sf
+resultat <- st_as_sf(resultat)
+
+# extraire longitude et latitude
+coords <- st_coordinates(resultat)
+resultat <- resultat %>%
+  mutate(longitude = coords[,1],
+         latitude = coords[,2])
+
+resultat$PRED <- as.numeric(resultat$PRED)
+
+#convertir en sf
+resultat_sf <- st_as_sf(resultat, coords = c("longitude", "latitude"), crs = 4326)
+
+# Créer la grille et la croiser avec les bordures
+grid_spacing <- 0.01  # Taille des carrés (~1 km)
+grid <- st_make_grid(isere, cellsize = grid_spacing, square = TRUE)
+grid_sf <- st_as_sf(data.frame(geometry = grid), crs = st_crs(isere))
+grid_sf <- st_filter(grid_sf, isere_polygon)
+
+
+#fonction d'interpolation KNN
+knn_interpolation <- function(point, stations, k = 3) {
+  distances <- st_distance(point, stations)  # Matrice de distances
+  nearest_indices <- order(as.vector(distances))[1:k]  # Convertir distances en vecteur avant d'ordonner
+  mean_pred <- mean(stations$PRED[nearest_indices])  # Moyenne des prédictions des k plus proches voisins
+  return(mean_pred)
+}
+
+# Appliquer KNN sur chaque point de la grille
+grid_sf$PRED_INTERP <- sapply(1:nrow(grid_sf), function(i) {
+  point <- st_sf(geometry = st_sfc(grid_sf$geometry[i]), crs = 4326)  # Point sf
+  knn_interpolation(point, resultat_sf, k = 3)
+})
+
+# Visualisation des prédictions interpolées
+ggplot() +
+  geom_sf(data = isere, fill = NA, color = "black") +
+  #geom_sf(data= resultat_sf, aes(color = PRED))+
+  geom_sf(data = grid_sf, aes(fill = PRED_INTERP), size = 0.3) +
+  scale_fill_viridis_c() +  # Correction de la couleur pour bien voir les valeurs
+  theme_minimal()
