@@ -411,3 +411,99 @@ ggplot() +
   geom_sf(data = grid_sf, aes(fill = PRED_INTERP), size = 0.3) +
   scale_fill_viridis_c() +  # Correction de la couleur pour bien voir les valeurs
   theme_minimal()
+
+#------------------------------------------------------------------------
+min_station = data  %>% group_by(data$NOM) %>% count(is.na(data$PLUIE)==FALSE)
+alpha = 44
+data_44 = as.data.frame(unique(data$NOM))
+data_44[54,2]=  max(na.omit(data$PLUIE[which(data$NOM=="LA MOTTE")]))
+
+data_ordered <- data %>% 
+  filter(!is.na(PLUIE)) %>% 
+  arrange(NOM, desc(PLUIE))
+
+data_annees = as.data.frame(unique(data$NOM))
+
+colnames(min_station) <- c("NOM", "PLUIE_valid", "n", "geometry")
+
+for (i in 1:nrow(data_annees)) {
+  station_nom <- unique(data$NOM)[i]  # Récupérer le nom de la station à l'itération i
+  
+  # Filtrer les lignes valides et correspondant à la station en cours
+  min_val <- min_station$n[min_station$NOM == station_nom & min_station$PLUIE_valid == TRUE]
+  data_annees[i, 2] <- min_val
+ 
+}
+
+data_annees [,3]= data_annees$V2-43
+
+# Vérifier d'abord que data_ordered contient bien une colonne geometry
+if (!"geometry" %in% colnames(data_ordered)) {
+  stop("La colonne 'geometry' est absente de data_ordered.")
+}
+
+if (!"geometry" %in% colnames(data_44)) {
+  data_44$geometry <- NA
+}
+
+# Boucle de mise à jour
+for (i in 1:nrow(data_44)) {
+  station_nom = data_44$`unique(data$NOM)`[i] 
+  k = data_annees[i, 3]  
+  
+  if (station_nom != "LA MOTTE") {
+    pluie_44 = data_ordered$PLUIE[which(data_ordered$NOM== station_nom)][k]
+    data_44[i,2] = pluie_44
+  }
+  geometries = unique(data_ordered$geometry[data_ordered$NOM == station_nom])
+  
+  if (length(geometries) == 1) {  # Vérifier qu'on a une seule géométrie unique
+    data_44$geometry[i] = geometries
+  } else {
+    data_44$geometry[i] = NA  # Mettre NA en cas de conflit
+  }
+}
+
+# Convertir en sf
+data_44 = st_as_sf(data_44, sf_column_name = "geometry")
+
+# extraire longitude et latitude
+coords <- st_coordinates(data_44)
+data_44 <- data_44 %>%
+  mutate(longitude = coords[,1],
+         latitude = coords[,2])
+
+data_44$V2 <- as.numeric(data_44$V2)
+
+#convertir en sf
+data_44_sf <- st_as_sf(data_44, coords = c("longitude", "latitude"), crs = 4326)%>%
+  st_set_crs(4326)
+
+# Créer la grille et la croiser avec les bordures
+grid_spacing <- 0.01  # Taille des carrés (~1 km)
+grid <- st_make_grid(isere, cellsize = grid_spacing, square = TRUE)
+grid_sf <- st_as_sf(data.frame(geometry = grid), crs = st_crs(isere))
+grid_sf <- st_filter(grid_sf, isere_polygon)
+
+
+#fonction d'interpolation KNN
+knn_interpolation <- function(point, stations, k = 3) {
+  distances <- st_distance(point, stations)  # Matrice de distances
+  nearest_indices <- order(as.vector(distances))[1:k]  # Convertir distances en vecteur avant d'ordonner
+  mean_pred <- mean(stations$V2[nearest_indices])  # Moyenne des prédictions des k plus proches voisins
+  return(mean_pred)
+}
+
+# Appliquer KNN sur chaque point de la grille
+grid_sf$pred <- sapply(1:nrow(grid_sf), function(i) {
+  point <- st_sf(geometry = st_sfc(grid_sf$geometry[i]), crs = 4326)  # Point sf
+  knn_interpolation(point, data_44_sf, k = 3)
+})
+
+# Visualisation des prédictions interpolées
+ggplot() +
+  geom_sf(data = isere, fill = NA, color = "black") +
+  #geom_sf(data= resultat_sf, aes(color = PRED))+
+  geom_sf(data = grid_sf, aes(fill = pred), size = 0.3) +
+  scale_fill_viridis_c() +  # Correction de la couleur pour bien voir les valeurs
+  theme_minimal()
